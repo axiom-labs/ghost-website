@@ -21,6 +21,16 @@ Route::get('/blog/{year}/{month}/{slug}', 'BlogController@show')->name('blog.sho
 Route::get('/docs', 'DocsController@index');
 Route::get('/docs/{version}/{page?}', 'DocsController@show')->name('docs.version');
 
+Route::get('/play', function() {
+    return view('play');
+});
+
+Route::get('/ghost.wasm', function() {
+    return response()->file(storage_path('app/ghost.wasm'), [
+        'Content-Type' => 'application/wasm',
+    ]);
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
